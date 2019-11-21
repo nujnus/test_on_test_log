@@ -1,0 +1,21 @@
+<html>
+<head>
+<style>
+  p {
+    word-wrap:break-word;  
+    word-break:break-all; 
+    white-space:pre;
+  }
+
+</style>
+
+</head>
+<body>
+
+{% for action in actions %}
+<p><font size="2" face="arial">{{ action.number.rjust(3, " ") }}  :  {{action.type}}</font></p>
+{% endfor %}
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<ul>
+<li><a href="/manage/statistics">统计报表</a></li>
+<li><a href="http://127.0.0.1:5002/manage/clear_statistics">清理统计数据</a></li>
+<li><a href="/logs">当前日志</a></li>
+<li><a href="/manage/actions">action日志</a></li>
+<li><a href="/manage/clear">清理当前日志</a></li>
+<ul>
+
+
+<h1>测试统计报表</h1>
+{% block body %}
+<table border="0">
+  {% for a in all %}
+    <tr><td>{{a.nightwatch_result}}</td><td>{{a.passed}}:</td><td> <a href={{"/manage/log/?uuid="+a.uuid}}>{{a.casename}}</a> </td><td><a href={{"/manage/rerun/?uuid="+a.uuid}}>run again</a></td></tr>
+  {% endfor %}
+</table>
+<div>passed: {{passed}}</div>
+<div>failed: {{failed}}</div>
+
+{% endblock %}

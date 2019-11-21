@@ -1,0 +1,73 @@
+<html>
+<head>
+
+<style>
+  td#data p {
+    word-wrap:break-word;  
+    word-break:break-all; 
+    white-space:pre;
+  }
+  td#expect_data p {
+    word-wrap:break-word;  
+    word-break:break-all; 
+    white-space:pre;
+  }
+  td {
+    vertical-align: top;
+    text-align: left;
+  }
+</style>
+
+</head>
+<body>
+<h3>case: {{r.casename}}</h3>
+<ul>
+<li><a href="/manage/open_test/?uuid={{r.id}}">test file: {{r.logfile}}</a></li>
+<li><a href="/manage/open_expect/?uuid={{r.id}}">expect file: {{r.expectfile}}</a></li>
+<li><a href="/manage/open_test_data/?uuid={{r.id}}">test data file: {{r.expectfile}}.data</a></li>
+<li><a href="/manage/open_expect_data/?uuid={{r.id}}">test data file: {{r.expectfile}}.data_expect</a></li>
+</ul>
+<p>passed : {{r.passed}}</p>
+<a href={{"/manage/rerun/?uuid="+r.id}}>run again</a>
+<p></p>
+<table border="1" >
+  <tr>
+    <th>{{testname}}</th>
+    <th>{{expectname}}</th>
+    <th>data</th>
+    <th>expect_data</th>
+  </tr>
+  <tr>
+    <td>
+{% set list1 = logfile.split('\n') %}
+{% for list in list1 %}
+<p><font size="2" face="arial">{{ list }}</font></p>
+{% endfor %}
+    </td>
+    <td>
+{% set list2 = expectfile.split('\n') %}
+{% for list in list2 %}
+<p><font size="2" face="arial">{{ list }}</font></p>
+{% endfor %}
+    </td>
+    <td id="data">
+{% set list3 = data.split('\n') %}
+{% for list in list3 %}
+<p><font size="2" face="arial">{{ list }}</font></p>
+{% endfor %}
+    </td>
+
+    <td id="expect_data">
+{% set list4 = data_expect.split('\n') %}
+{% for list in list4 %}
+<p><font size="2" face="arial">{{ list }}</font></p>
+{% endfor %}
+    </td>
+
+
+  </tr>
+</table>
+
+</body>
+</html>
+
