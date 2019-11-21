@@ -7,6 +7,53 @@ tntlog的目的是通过收集在e2e测试中, react发送的action, 和state的
 ## 运行截图:
 ![Alt Text](./sample2.gif)
 
+# 被测的react.js项目中配置如下:
+```
+
+//中间件端配置:
+const remote_log_action = store => next => action =>{
+
+    if ( action.type != 'CREATE_REMOTE_LOG_REQUESTED' 
+      && action.type != "CREATE_REMOTE_LOG_SUCCESS" 
+      && action.type != "CREATE_REMOTE_LOG_FAILURE" )  {
+
+        store.dispatch({type: 'CREATE_REMOTE_LOG_REQUESTED', payload: {
+          log_backend: action.log_backend, action_type: action.type, timestamp: new Date().getTime()}
+          }) 
+    }
+
+    let result = next(action);
+
+    return result;
+}
+
+//注册saga
+function* rootSaga() {
+  yield [
+      ...
+      yield takeEvery("CREATE_REMOTE_LOG_REQUESTED",  create_remote_log_saga),
+      ...
+  ]
+}
+
+
+// saga端配置:
+
+function* create_remote_log_saga(action) {
+    try {
+        console.log("remote_log_saga:", action)
+        const response = yield call(axios.post, create_remote_log_url(), action.payload)
+        yield put({type: 'CREATE_REMOTE_LOG_SUCCESS', payload: response.data});
+    } catch(error) {
+        console.log("remote_log_saga error:", error)
+
+        yield put({type: 'CREATE_REMOTE_LOG_FAILURE'});
+    }
+}
+
+
+```
+
 
 # 测试服务器端:
 ## 安装:
@@ -18,6 +65,11 @@ pip install -r requirements.txt
 # 初始化数据库:
 cd models
 python init.py
+
+# 安装命令行工具
+cd cmdline_tool/logtest
+python setup.py install
+
 ```
 
 ## 启动:

@@ -3,3 +3,4 @@ Flask-Cors==3.0.8
 Flask-RESTful==0.3.7
 Jinja2==2.10
 peewee==3.11.2
+fire==0.1.3

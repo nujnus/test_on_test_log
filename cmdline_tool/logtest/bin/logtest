@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+from fire.core import Fire
+import sys
+from logtest import logtest
+import os
+
+class LogTest(object):
+  """logtest cmp [target_file]  [expect_file]"""
+  def cmp(self, target_file, expect_file, casename, cwd, nightwatch_result):
+    logtest.compare(os.path.abspath(target_file), os.path.abspath(expect_file), casename, cwd, nightwatch_result)
+
+
+if __name__ == '__main__':
+  Fire(LogTest)
