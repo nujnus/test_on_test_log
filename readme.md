@@ -2,12 +2,16 @@
 <img src="./tntlog.png" width="200" height="200" />
 
 # 简介:
+tntlog的目的是通过收集在e2e测试中, react发送的action, 和state的状态来判断程序运行是否正确.
 
+## 运行截图:
+![Alt Text](./sample2.gif)
+
+
+# 测试服务器端:
+## 安装:
 建议python环境: Python 3.6.2
 
-# 服务器端:
-
-## 安装:
 ```
 pip install -r requirements.txt
 
@@ -124,7 +128,5 @@ sh test.sh
 ## 其他:
 用yaml而不是json记录log, 是因为json不支持注释.
 
-## 使用截图:
-![Alt Text](./sample2.gif)
 
 
