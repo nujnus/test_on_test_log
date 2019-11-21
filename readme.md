@@ -2,7 +2,7 @@
 <img src="./tntlog.png" width="200" height="200" />
 
 # 简介:
-tntlog的目的是通过收集在e2e测试中, react发送的action, 和state的状态来判断程序运行是否正确.
+tntlog的目的是通过收集在e2e测试中, react发送的action, 和state的状态来判断基于react.js的前端程序运行是否正确.
 
 ## 运行截图:
 ![Alt Text](./sample2.gif)
