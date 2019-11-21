@@ -1,5 +1,5 @@
 
-<img src="./tntlog.png" width="200" height="400" />
+<img src="./tntlog.png" width="200" height="200" />
 
 # 简介:
 
