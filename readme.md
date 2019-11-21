@@ -1,5 +1,5 @@
 
-![Alt Text](./tntlog.png =250x250)
+<img src="./tntlog.png" width="200" height="400" />
 
 # 简介:
 
